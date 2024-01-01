@@ -46,7 +46,7 @@ def trustValue(data, num_nearest=1):
 
         nearest_data = data_copy.loc[nearest_indices].copy()
         avg = nearest_data['MagReading'].mean()
-        data_copy['TrustValue'][i] = (abs(data_copy['MagReading'][i] - avg)) / avg
+        data_copy['TrustValue'][i] = 1-((abs(data_copy['MagReading'][i] - avg)) / avg)
 
     return data_copy
 
@@ -67,8 +67,8 @@ def drawCircles(data):
         lat = data['Latitude'][i]
         lon = data['Longitude'][i]
         trust = data['TrustValue'][i]
-        #folium.Circle(location=[lat, lon], radius=trust * radiusToEdge * 1000, color='red', fill=True).add_to(map)
-        data['trustedRadius'][i] = trust * radiusToEdge * 1000
+        folium.Circle(location=[lat, lon], radius=trust * radiusToEdge/2 * 1000, color='red', fill=True).add_to(map)
+        data['trustedRadius'][i] = trust * (radiusToEdge/2) * 1000
 
     for i in range(len(data)):
         lat = data['Latitude'][i]
