@@ -1,7 +1,6 @@
 from math import radians, sin, cos, sqrt, atan2, pi
 import folium
 import numpy as np
-from scipy.integrate import nquad, quad
 import pandas as pd
 
 
@@ -97,5 +96,5 @@ def plotPointsFolium(data):
 
 def normalizeIndex(index):
     minIndex=-8
-    maxIndex=20
+    maxIndex=15
     return abs(round(((index-minIndex)/(maxIndex-minIndex))*10,2))
