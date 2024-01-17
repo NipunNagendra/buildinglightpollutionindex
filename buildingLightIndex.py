@@ -27,7 +27,7 @@ def processCSV(path):
 
 
 if __name__ == "__main__":
-    df = processCSV("data_backyard.csv")
+    df = processCSV("data_park.csv")
 
     #df = blif.filterOutliers(df, 3)
     df, edgeRadius, map, centerLon, centerLat = blif.drawCircles(df)
@@ -37,7 +37,7 @@ if __name__ == "__main__":
     normalizedIndex = blif.normalizeIndex(index)
     folium.Circle(location=[centerLat, centerLon], radius=edgeRadius, color='blue', fill=True, popup=str(normalizedIndex)).add_to(map)
 
-    #map.show_in_browser()
+    map.show_in_browser()
     print(f"normalized index: {blif.normalizeIndex(index)}")
     print(f"Aggregate Candela Sum: {aggregateCandelaSum}")
     print(df['MagReading'].mean())

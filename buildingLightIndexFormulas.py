@@ -66,7 +66,7 @@ def drawCircles(data):
         lat = data['Latitude'][i]
         lon = data['Longitude'][i]
         trust = data['TrustValue'][i]
-        folium.Circle(location=[lat, lon], radius=trust * radiusToEdge/2 * 1000, color='red', fill=True).add_to(map)
+        #folium.Circle(location=[lat, lon], radius=trust * radiusToEdge/2 * 1000, color='red', fill=True).add_to(map)
         data['trustedRadius'][i] = trust * (radiusToEdge/2) * 1000
 
     for i in range(len(data)):
